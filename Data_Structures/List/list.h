@@ -3,16 +3,6 @@
 
 #include"../../Libraries/data_entry.h"
 
-/*#include"../../Payment_System/Server/server.h"
-
-typedef struct DataEntry {
-    enum { TRANSACTION, ACCOUNT } type;
-    union {
-        ST_transaction transactionData;
-        ST_accountsDB_t accountData;
-    } data;
-} listEntry;*/
-
 typedef struct listNode {
 	listEntry entry;
 	struct listNode *next;
