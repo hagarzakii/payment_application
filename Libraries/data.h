@@ -16,11 +16,6 @@ typedef struct ST_transaction_t
 	EN_transState_t transState;
 	int transactionSequenceNumber;
 }ST_transaction;
-
-typedef enum EN_serverError_t
-{
-	SERVER_OK, SAVING_FAILED, TRANSACTION_NOT_FOUND, ACCOUNT_NOT_FOUND,LOW_BALANCE, BLOCKED_ACCOUNT
-}EN_serverError_t ;
  
 typedef enum EN_accountState_t
 {
