@@ -20,11 +20,16 @@ int main(void)
 		if(cardStatus == WRONG_NAME)
 		{
 			printf("The name should be from 20 to 24 characters\n");
-			cardStatus = getCardHolderName(&cardData);
 		}
 		else{
 			break;
 		}
+	}
+	
+	if(cardStatus == WRONG_NAME)
+	{
+		printf("You have reached your max tries\n");
+		return 0;
 	}
 
     for(int counter = 1 ; counter <=3 ; counter++)
@@ -33,11 +38,16 @@ int main(void)
 		if(cardStatus == WRONG_PAN)
 		{
 			printf("The PAN should range from 16 to 19 digits\n");
-			cardStatus = getCardPAN(&cardData);
 		}
 		else{
 			break;
 		}
+	}
+	
+	if(cardStatus == WRONG_PAN)
+	{
+		printf("You have reached your max tries\n");
+		return 0;
 	}
 	
 	terminalStatus = isValidCardPAN(&cardData);
@@ -53,11 +63,16 @@ int main(void)
 		if(terminalStatus == WRONG_DATE)
 		{
 			printf("Wrong Date\n");
-			terminalStatus = getTransactionDate(&termData);
 		}
 		else{
 			break;
 		}
+	}
+	
+	if(terminalStatus == WRONG_DATE)
+	{
+		printf("You have reached your max tries\n");
+		return 0;
 	}
 	
 	for(int counter = 1 ; counter <=3 ; counter++)
@@ -66,11 +81,16 @@ int main(void)
 		if(terminalStatus == INVALID_AMOUNT)
 		{
 			printf("Invalid amount\n");
-			terminalStatus = getTransactionAmount(&termData);
 		}
 		else{
 			break;
 		}
+	}
+	
+	if(terminalStatus == INVALID_AMOUNT)
+	{
+		printf("You have reached your max tries\n");
+		return 0;
 	}
 	
 	terminalStatus = isBelowMaxAmount(&termData);

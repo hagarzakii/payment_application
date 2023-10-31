@@ -92,7 +92,7 @@ EN_serverError_t isAmountAvailable(ST_terminalData_t *termData,ST_accountsDB_t* 
 
 EN_serverError_t saveTransaction(ST_transaction *transData, List *pl)
 {
-	int lastTransSeq;
+	int lastTransSeq = 0;
 	ListNode *current = pl->head;
     while (current != NULL) {
         listEntry entry = current->entry;

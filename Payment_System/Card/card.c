@@ -5,13 +5,21 @@ EN_cardError_t getCardHolderName(ST_cardData_t *cardData)
 {
 	EN_cardError_t cardError;
     printf("Enter Card holder Name:\n");
-    scanf("%[^\n]",cardData->cardHolderName);
+    if (fgets(cardData->cardHolderName, sizeof(cardData->cardHolderName), stdin) != NULL) {
+        int len = strlen(cardData->cardHolderName);
+        if (len > 0 && cardData->cardHolderName[len - 1] == '\n') {
+            cardData->cardHolderName[len - 1] = '\0';
+        }
 	if(strlen(cardData->cardHolderName) > CARDHOLDERMAX || strlen(cardData->cardHolderName) < CARDHOLDERMIN || cardData->cardHolderName == NULL)
 	{
 		cardError = WRONG_NAME;
 	}
 	else{
 		cardError = CARD_OK;
+	}
+	}
+	else{
+		cardError = WRONG_NAME;
 	}
 	return cardError;
 }
