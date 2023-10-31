@@ -1,7 +1,7 @@
 #ifndef DATASTRUCTURES_LIST
 #define DATASTRUCTURES_LIST
 
-#include"../../Libraries/data_entry.h"
+#include"../../Libraries/data.h"
 
 typedef struct listNode {
 	listEntry entry;
