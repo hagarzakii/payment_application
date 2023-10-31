@@ -3,12 +3,14 @@
 
 #include "../Payment_System/Server/server.h"
 
-typedef struct DataEntry {
+typedef struct Datatype {
     enum { TRANSACTION, ACCOUNT } type;
     union {
         ST_transaction transactionData;
         ST_accountsDB_t accountData;
     } data;
-} listEntry;
+} dataType;
+
+typedef dataType listEntry ;
 
 #endif

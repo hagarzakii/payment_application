@@ -37,7 +37,7 @@ void DFILE_readtransactionData(List *pl) {
            entry.data.transactionData.transState = INTERNAL_SERVER_ERROR;
         }
 		entry.type = TRANSACTION;
-        insertList(entry, pl);
+        insertList(pl->size,entry, pl);
 	}
     fclose(fileRead);
 }
@@ -87,7 +87,7 @@ void DFILE_readAccountsData(List *pl) {
 	listEntry entry;
 	char readState[7];
 	
-    while (fscanf(fileRead, "%25[^,],%f,%19[^,],%19[^,],%6[^,]", 
+    while (fscanf(fileRead, "%25[^,],%f,%19[^,],%19[^,],%6[^ ]", 
 	              entry.data.accountData.accountName,
                   &entry.data.accountData.balance,
                   readState,
@@ -103,7 +103,7 @@ void DFILE_readAccountsData(List *pl) {
             entry.data.accountData.state = BLOCKED;
         }
 		entry.type = ACCOUNT;
-        insertList(entry, pl);
+        insertList(pl->size,entry, pl);
 		}
     fclose(fileRead);
 }

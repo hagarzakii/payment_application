@@ -18,7 +18,7 @@ int listFull(List *pl);
 int listEmpty(List *pl);
 int listSize(List *pl);
 void destroyList(List *pl);
-int insertList(listEntry item , List *pl);
+int insertList(int pos,listEntry item , List *pl);
 void deleteList(int p ,listEntry *pitem , List *pl);
 void retrieveList(int p ,listEntry *pitem , List *pl);
 void replaceList(int p ,listEntry item , List *pl);

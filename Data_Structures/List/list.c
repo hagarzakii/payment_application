@@ -17,14 +17,13 @@ int listEmpty(List *pl)
 	return (pl->size==0);
 }
 
-int insertList(listEntry item , List *pl)
+int insertList(int pos ,listEntry item , List *pl)
 {
 	ListNode *p , *q ;
 	int i;
 	if(p = (ListNode*)malloc(sizeof(ListNode))){
 	p->entry = item;
 	p->next = NULL;
-	int pos =pl->size;
 	if(pos == 0)
 	{
 		p->next = pl->head;

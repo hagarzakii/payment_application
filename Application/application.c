@@ -1,5 +1,4 @@
 #include"../Libraries/libraries.h"
-#include"application.h"
 #include"../Payment_System/Card/card.h"
 #include"../Payment_System/Terminal/terminal.h"
 #include"../Payment_System/Server/server.h"
@@ -15,45 +14,70 @@ int main(void)
 	
 	printf("Welcome to our payment application\n");
 	
-	
-	cardStatus = getCardHolderName(&cardData);
-	while(cardStatus == WRONG_NAME)
+	for(int counter = 1 ; counter <=3 ; counter++)
 	{
-		printf("The name should be from 20 to 24 characters\n");
 		cardStatus = getCardHolderName(&cardData);
+		if(cardStatus == WRONG_NAME)
+		{
+			printf("The name should be from 20 to 24 characters\n");
+			cardStatus = getCardHolderName(&cardData);
+		}
+		else{
+			break;
+		}
 	}
 
-	cardStatus = getCardPAN(&cardData);
-	while(cardStatus == WRONG_PAN)
+    for(int counter = 1 ; counter <=3 ; counter++)
 	{
-		printf("The PAN should range from 16 to 19 digits\n");
 		cardStatus = getCardPAN(&cardData);
+		if(cardStatus == WRONG_PAN)
+		{
+			printf("The PAN should range from 16 to 19 digits\n");
+			cardStatus = getCardPAN(&cardData);
+		}
+		else{
+			break;
+		}
 	}
+	
 	terminalStatus = isValidCardPAN(&cardData);
 	if(terminalStatus == INVALID_CARD)
 	{
-		printf("PAN should be a Luhn Number\n");
+		printf("Invalid PAN\n");
 		return 0;
 	}
 
-	terminalStatus = getTransactionDate(&termData);
-	while(terminalStatus == WRONG_DATE)
+    for(int counter = 1 ; counter <=3 ; counter++)
 	{
-		printf("Wrong Date\n");
 		terminalStatus = getTransactionDate(&termData);
+		if(terminalStatus == WRONG_DATE)
+		{
+			printf("Wrong Date\n");
+			terminalStatus = getTransactionDate(&termData);
+		}
+		else{
+			break;
+		}
 	}
 	
-	terminalStatus = getTransactionAmount(&termData);
-	while(terminalStatus == INVALID_AMOUNT)
+	for(int counter = 1 ; counter <=3 ; counter++)
 	{
-		printf("Invalid amount\n");
 		terminalStatus = getTransactionAmount(&termData);
+		if(terminalStatus == INVALID_AMOUNT)
+		{
+			printf("Invalid amount\n");
+			terminalStatus = getTransactionAmount(&termData);
+		}
+		else{
+			break;
+		}
 	}
+	
 	terminalStatus = isBelowMaxAmount(&termData);
-	while(terminalStatus == EXCEED_MAX_AMOUNT)
+	if(terminalStatus == EXCEED_MAX_AMOUNT)
 	{
 		printf("Exceeded max amount\n");
-		terminalStatus = isBelowMaxAmount(&termData);
+		return 0;
 	}
 	
 	ST_transaction transactionData;
